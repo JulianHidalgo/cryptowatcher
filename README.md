@@ -23,7 +23,7 @@ Price Monitoring
 
 To monitor a price in Bittrex, enable one of the watched values:
 
-```json
+```javascript
 { param: 'DASH', valuesProvider: bittrexPriceProvider, valueTests: [(x) => { return x >= 0.0775; }], message: priceFormatter('Dash') }
 ```
 		
