@@ -1,0 +1,127 @@
+<layout-use("./page.marko")
+  title="Dashboard"
+  content-title="Dashboard">
+    <layout-put into="content">
+      <h2>Balance</h2>
+      <table cellpadding="5">
+        <thead>
+          <tr>
+            <th class="align-left">Currency</th>
+            <th>Balance</th>
+            <th>Last Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <for(r in data.balance)>
+          <tr>
+            <td class="align-left">${ r.Currency }</td>
+            <td>${ r.Balance.toFixed(8) }</td>
+            <td>${ r.Last != null? r.Last.toFixed(8) : '' }</td>
+          </tr>
+          </for>
+        </tbody>
+      </table>
+
+      <h2>Open Orders</h2>
+      <table cellpadding="5">
+        <thead>
+          <tr>
+            <th class="align-left">Exchange</th>
+            <th class="align-center">Order Type</th>
+            <th>Quantity</th>
+            <th>Limit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <for(r in data.orders)>
+          <tr>
+            <td class="align-left">${ r.Exchange }</td>
+            <td class="align-center">${ r.OrderType.replace('LIMIT_BUY', 'Buy').replace('LIMIT_SELL', 'Sell') }</td>
+            <td>${ r.Quantity.toFixed(2) }</td>
+            <td>${ r.Limit.toFixed(8) }</td>
+          </tr>
+          </for>
+      </tbody>
+      </table>
+
+      <h2>Market History</h2>
+      <table cellpadding="5">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Price</th>            
+          </tr>
+        </thead>
+        <tbody>
+          <for(r in data.marketHistory.slice(0, 10))>
+          <tr>
+            <td>${ r.OrderType.replace('BUY', 'Buy').replace('SELL', 'Sell') }</td>
+            <td>${ r.Quantity.toFixed(2) }</td>
+            <td>${ r.Total.toFixed(8) }</td>
+            <td>${ r.Price.toFixed(8) }</td>
+          </tr>
+          </for>
+      </tbody>
+      </table>
+
+      <h2>Bids</h2>
+      <table cellpadding="5">
+        <thead>
+          <tr>
+            <th>Quantity</th>
+            <th>Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <for(r in data.orderBook.buy.slice(0, 10))>
+          <tr>
+            <td>${ r.Quantity.toFixed(2) }</td>
+            <td>${ r.Rate.toFixed(8) }</td>
+          </tr>
+          </for>
+      </tbody>
+      </table>
+      
+      <h2>Asks</h2>
+      <table cellpadding="5">
+        <thead>
+          <tr>
+            <th>Quantity</th>
+            <th>Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <for(r in data.orderBook.sell.slice(0, 10))>
+          <tr>
+            <td>${ r.Quantity.toFixed(2) }</td>
+            <td>${ r.Rate.toFixed(8) }</td>
+          </tr>
+          </for>
+      </tbody>
+      </table>
+      
+      <h2>Completed Orders</h2>
+      <table cellpadding="5">
+         <thead>
+          <tr>
+            <th class="align-left">Exchange</th>
+            <th class="align-center">Order Type</th>
+            <th>Quantity</th>
+            <th>Limit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <for(r in data.historicOrders.slice(0, 10))>
+          <tr>
+            <td class="align-left">${ r.Exchange }</td>
+            <td class="align-center">${ r.OrderType.replace('LIMIT_BUY', 'Buy').replace('LIMIT_SELL', 'Sell') }</td>
+            <td>${ r.Quantity.toFixed(2) }</td>
+            <td>${ r.Limit.toFixed(8) }</td>
+          </tr>
+          </for>
+        </tbody>
+      </table>
+    </layout-put>
+</layout-use>

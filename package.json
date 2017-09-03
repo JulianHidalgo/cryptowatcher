@@ -1,0 +1,30 @@
+{
+  "name": "cryptotrading",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "lab -t 100",
+    "test-cov": "lab -c --coverage-exclude notificationSenderTest -r html -o test/coverage.html ",
+    "lint": "lab -L -r html -o coverage.html "
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "lab": "^14.1.0"
+  },
+  "dependencies": {
+    "apn": "^2.1.5",
+    "bluebird": "^3.5.0",
+    "boom": "^5.2.0",
+    "hapi": "^16.5.0",
+    "inert": "^4.2.1",
+    "jayson": "^2.0.3",
+    "marko": "^4.4.19",
+    "node-notifier": "^5.1.2",
+    "node.bittrex.api": "^0.3.2",
+    "nodemailer": "^4.0.1",
+    "socket.io-client": "^2.0.3",
+    "wreck": "^12.2.2"
+  }
+}
