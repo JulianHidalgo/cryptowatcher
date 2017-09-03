@@ -20,12 +20,14 @@ Price Monitoring
 ----------------
 
 1. Edit index.js and enable one of the price options. You can choose Shapeshift, Changelly and Bittrex.
-	1.1 To monitor a price in Bittrex, enable one of the watched values:
-		```javascript
-		{ param: 'DASH', valuesProvider: bittrexPriceProvider, valueTests: [(x) => { return x >= 0.0775; }], message: priceFormatter('Dash') }
-		```
+
+To monitor a price in Bittrex, enable one of the watched values:
+
+```json
+{ param: 'DASH', valuesProvider: bittrexPriceProvider, valueTests: [(x) => { return x >= 0.0775; }], message: priceFormatter('Dash') }
+```
 		
-		The value tests supports a list of conditions to evaluate. For example above, (x) => { return x >= 0.0775; } means a notification will be sent when the price is greater or equal to 0.0775 BTC.
+The value tests supports a list of conditions to evaluate. For example above, (x) => { return x >= 0.0775; } means a notification will be sent when the price is greater or equal to 0.0775 BTC.
 
 
 2. Run the service
